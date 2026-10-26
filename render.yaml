@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: events-at-equestrian-woods
+    runtime: python
+    plan: free
+    region: ohio
+    buildCommand: pip install -r requirements.txt
+    # Two Microsoft calls with 20s timeouts each can outlast gunicorn's default 30s.
+    startCommand: gunicorn app:app --timeout 60
+    healthCheckPath: /healthz
+    envVars:
+      - key: MAIL_TO
+        value: eventinfo@eventsatequestrian.com, booking@altusgp.com
+      - key: MAIL_FROM
+        value: info@altusgp.com
+      # Secrets: Render asks for these when you create the Blueprint.
+      - key: AZURE_TENANT_ID
+        sync: false
+      - key: AZURE_CLIENT_ID
+        sync: false
+      - key: AZURE_CLIENT_SECRET
+        sync: false

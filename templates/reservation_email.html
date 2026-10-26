@@ -1,0 +1,56 @@
+<div style="font-family: 'Segoe UI', Arial, sans-serif; background-color: #F6F0E5; padding: 40px 16px;">
+  <table role="presentation" style="max-width: 660px; margin: 0 auto; background-color: #FFFFFF; border-radius: 10px; overflow: hidden; border-collapse: collapse;">
+    <tr>
+      <td style="background-color: #0B2322; padding: 36px 40px;">
+        <div style="color: #C7A16E; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px;">Events at Equestrian Woods</div>
+        <div style="color: #F6F0E5; font-size: 30px; font-weight: bold;">New Reservation Inquiry</div>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 34px 40px 10px 40px;">
+        <div style="display: inline-block; background-color: #EAE1D1; border: 1px solid #D7CBB4; border-radius: 24px; padding: 9px 20px; color: #816948; font-size: 16px; font-weight: bold;">
+          👤 {{ name }}
+        </div>
+        <div style="color: #52605C; font-size: 14px; margin-top: 10px;">Submitted {{ submitted_at }}</div>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 18px 40px;">
+        <table role="presentation" style="width: 100%; border-collapse: collapse;">
+          <tr><td style="padding: 16px 18px; background-color: #EAE1D1; border-radius: 6px 0 0 6px; color: #816948; font-size: 14px; text-transform: uppercase; width: 40%;">Email</td>
+              <td style="padding: 16px 18px; background-color: #EAE1D1; border-radius: 0 6px 6px 0; color: #0B2322; font-size: 17px; font-weight: bold;">{{ email }}</td></tr>
+          <tr><td colspan="2" style="height: 8px;"></td></tr>
+          <tr><td style="padding: 16px 18px; background-color: #F6F0E5; border-radius: 6px 0 0 6px; color: #816948; font-size: 14px; text-transform: uppercase;">Phone</td>
+              <td style="padding: 16px 18px; background-color: #F6F0E5; border-radius: 0 6px 6px 0; color: #0B2322; font-size: 17px; font-weight: bold;">{{ phone }}</td></tr>
+          <tr><td colspan="2" style="height: 8px;"></td></tr>
+          <tr><td style="padding: 16px 18px; background-color: #EAE1D1; border-radius: 6px 0 0 6px; color: #816948; font-size: 14px; text-transform: uppercase;">Event Type</td>
+              <td style="padding: 16px 18px; background-color: #EAE1D1; border-radius: 0 6px 6px 0; color: #0B2322; font-size: 17px; font-weight: bold;">{{ event_type }}</td></tr>
+          <tr><td colspan="2" style="height: 8px;"></td></tr>
+          <tr><td style="padding: 16px 18px; background-color: #F6F0E5; border-radius: 6px 0 0 6px; color: #816948; font-size: 14px; text-transform: uppercase;">Guests</td>
+              <td style="padding: 16px 18px; background-color: #F6F0E5; border-radius: 0 6px 6px 0; color: #0B2322; font-size: 17px; font-weight: bold;">{{ guest_count }}</td></tr>
+          <tr><td colspan="2" style="height: 8px;"></td></tr>
+          <tr><td style="padding: 16px 18px; background-color: #EAE1D1; border-radius: 6px 0 0 6px; color: #816948; font-size: 14px; text-transform: uppercase;">Preferred Date</td>
+              <td style="padding: 16px 18px; background-color: #EAE1D1; border-radius: 0 6px 6px 0; color: #0B2322; font-size: 17px; font-weight: bold;">{{ preferred_date }}</td></tr>
+          <tr><td colspan="2" style="height: 8px;"></td></tr>
+          <tr><td style="padding: 16px 18px; background-color: #F6F0E5; border-radius: 6px 0 0 6px; color: #816948; font-size: 14px; text-transform: uppercase;">Backup Date</td>
+              <td style="padding: 16px 18px; background-color: #F6F0E5; border-radius: 0 6px 6px 0; color: #0B2322; font-size: 17px; font-weight: bold;">{{ backup_date }}</td></tr>
+          <tr><td colspan="2" style="height: 8px;"></td></tr>
+          <tr><td style="padding: 16px 18px; background-color: #EAE1D1; border-radius: 6px 0 0 6px; color: #816948; font-size: 14px; text-transform: uppercase;">Flexible?</td>
+              <td style="padding: 16px 18px; background-color: #EAE1D1; border-radius: 0 6px 6px 0; color: #0B2322; font-size: 17px; font-weight: bold;">{{ dates_flexible }}</td></tr>
+          <tr><td colspan="2" style="height: 8px;"></td></tr>
+          <tr><td style="padding: 16px 18px; background-color: #F6F0E5; border-radius: 6px 0 0 6px; color: #816948; font-size: 14px; text-transform: uppercase;">Tour Requested?</td>
+              <td style="padding: 16px 18px; background-color: #F6F0E5; border-radius: 0 6px 6px 0; color: #0B2322; font-size: 17px; font-weight: bold;">{{ tour_requested }}</td></tr>
+          <tr><td colspan="2" style="height: 8px;"></td></tr>
+          <tr><td style="padding: 16px 18px; background-color: #EAE1D1; border-radius: 6px 0 0 6px; color: #816948; font-size: 14px; text-transform: uppercase;">Heard About Us</td>
+              <td style="padding: 16px 18px; background-color: #EAE1D1; border-radius: 0 6px 6px 0; color: #0B2322; font-size: 17px; font-weight: bold;">{{ heard_about }}</td></tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 10px 40px 36px 40px;">
+        <div style="color: #816948; font-size: 14px; text-transform: uppercase; margin-bottom: 10px;">Message</div>
+        <div style="background-color: #0B2322; color: #F6F0E5; padding: 20px 22px; border-radius: 8px; font-size: 17px; line-height: 1.7; white-space: pre-wrap;">{{ message }}</div>
+      </td>
+    </tr>
+  </table>
+</div>
