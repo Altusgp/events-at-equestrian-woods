@@ -1,6 +1,7 @@
 """Flask backend for the Events at Equestrian Woods landing page.
 
-Serves templates/index.html and receives its inquiry form at POST /api/inquiry,
+Serves templates/index.html at /preopenreservations (/ redirects there) and
+receives its inquiry form at POST /api/inquiry,
 emailing each inquiry to the venue team using templates/<inquiry_type>_email.html.
 """
 
@@ -15,7 +16,7 @@ from datetime import date, datetime
 from zoneinfo import ZoneInfo
 
 from dotenv import load_dotenv
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, redirect, render_template, request, url_for
 from flask_cors import CORS
 
 load_dotenv()
@@ -89,6 +90,11 @@ def send_email(subject, html, reply_to):
 
 
 @app.get("/")
+def home():
+    return redirect(url_for("index"))
+
+
+@app.get("/preopenreservations", strict_slashes=False)
 def index():
     return render_template("index.html")
 
