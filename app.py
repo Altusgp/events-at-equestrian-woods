@@ -1,7 +1,7 @@
 """Flask backend for the Events at Equestrian Woods landing page.
 
-Serves templates/index.html at /preopenreservations (/ redirects there) and
-receives its inquiry form at POST /api/inquiry,
+Serves templates/index.html at / (the old /preopenreservations link redirects there)
+and receives its inquiry form at POST /api/inquiry,
 emailing each inquiry to the venue team using templates/<inquiry_type>_email.html.
 """
 
@@ -90,13 +90,14 @@ def send_email(subject, html, reply_to):
 
 
 @app.get("/")
-def home():
-    return redirect(url_for("index"))
+def index():
+    return render_template("index.html")
 
 
 @app.get("/preopenreservations", strict_slashes=False)
-def index():
-    return render_template("index.html")
+def preopenreservations():
+    # Former address of the page; keep links already shared working.
+    return redirect(url_for("index"))
 
 
 @app.get("/healthz")
