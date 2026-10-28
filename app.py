@@ -34,6 +34,8 @@ CORS(app, resources={r"/api/*": {
 MIN_DATE = date(2026, 11, 1)
 VENUE_TZ = ZoneInfo("America/New_York")  # Nicholasville, KY
 EMAIL_RE = re.compile(r"^[^\s@]+@[^\s@]+\.[^\s@]+$")
+# Public address of the site; keep in sync with the canonical link in templates/index.html.
+CANONICAL_HOST = "preopenreservations.eventsatequestrian.com"
 
 
 def clean(data, key, limit=200, multiline=False):
@@ -89,9 +91,34 @@ def send_email(subject, html, reply_to):
     )
 
 
+@app.before_request
+def redirect_to_canonical_host():
+    # Send the onrender.com address to the custom domain so Google indexes only one copy.
+    # /healthz is exempt so Render's health checks aren't redirected.
+    if request.host.endswith(".onrender.com") and request.path != "/healthz":
+        return redirect(f"https://{CANONICAL_HOST}{request.full_path.rstrip('?')}", code=301)
+
+
 @app.get("/")
 def index():
     return render_template("index.html")
+
+
+@app.get("/robots.txt")
+def robots():
+    body = f"User-agent: *\nAllow: /\n\nSitemap: https://{CANONICAL_HOST}/sitemap.xml\n"
+    return body, {"Content-Type": "text/plain; charset=utf-8"}
+
+
+@app.get("/sitemap.xml")
+def sitemap():
+    body = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f"  <url><loc>https://{CANONICAL_HOST}/</loc></url>\n"
+        "</urlset>\n"
+    )
+    return body, {"Content-Type": "application/xml; charset=utf-8"}
 
 
 @app.get("/preopenreservations", strict_slashes=False)
